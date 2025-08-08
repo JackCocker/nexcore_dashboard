@@ -1,0 +1,173 @@
+.spacing-1{
+  margin-top: 5em;
+}
+
+.spacing-2{
+  margin-top: 1em;
+}
+
+.center{
+  text-align: center;
+}
+
+.text-accent{
+  color: #727272;
+}
+
+/* Fondo general */
+body {
+  background: linear-gradient(135deg, #0f1d3a, #1a2f5b);
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Contenedor principal */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 100px auto 20px auto; /* Separación del header */
+}
+
+
+/* Tarjeta moderna tipo glass */
+.login-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px 25px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Título */
+.login-title {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Input */
+.form-control {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+
+.form-control::placeholder {
+  color: #ccc;
+}
+
+.input-group-addon {
+  background-color: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+}
+
+/* Botón */
+.btn-login {
+  background: #00c9ff;
+  background: linear-gradient(to right, #92fe9d, #00c9ff);
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  padding: 10px;
+  margin-top: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  color: #000;
+}
+
+/* Enlace de registro */
+.register-link {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.register-link a:hover {
+  color: #ccc;
+}
+
+
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  color:  #444444;
+  background-color: #ffffff;
+  padding: 15px 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 36px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.header .btn-getstarted,
+.header .btn-getstarted:focus {
+  color: #444444;
+  background:  #ffffff;
+  font-size: 14px;
+  padding: 8px 25px;
+  margin: 0 0 0 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.header .btn-getstarted:hover,
+.header .btn-getstarted:focus:hover {
+  color: #444444;
+  background: color-mix(in srgb,  #ffffff, transparent 15%);
+}
+
+@media (max-width: 1200px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .btn-getstarted {
+    order: 2;
+    margin: 0 15px 0 0;
+    padding: 6px 15px;
+  }
+
+  .header .navmenu {
+    order: 3;
+  }
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
