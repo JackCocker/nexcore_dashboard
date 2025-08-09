@@ -60,14 +60,14 @@ if (isset($_SESSION['id'])) {
           <fieldset>
 
             <div class="text-center">
-              <h2 class="login-title" style="color: #fff;">Registro</h2>
+              <h2 class="login-title" style="color: #fff;">Sign up</h2>
             </div>
             <hr>
             <!-- Caja de texto para usuario -->
             <label class="sr-only" for="user">Nombre</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="name" placeholder="Ingresa tu nombre">
+              <input type="text" class="form-control" name="name" placeholder="Username">
             </div>
 
             <!-- Div espaciador -->
@@ -77,7 +77,7 @@ if (isset($_SESSION['id'])) {
             <label class="sr-only" for="user">Email</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-              <input type="text" class="form-control" name="email" placeholder="Ingresa tu email">
+              <input type="text" class="form-control" name="email" placeholder="Email">
             </div>
 
             <!-- Div espaciador -->
@@ -87,7 +87,7 @@ if (isset($_SESSION['id'])) {
             <label class="sr-only" for="clave">Contraseña</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="text" autocomplete="off" class="form-control" name="clave" placeholder="Ingresa tu contraseña">
+              <input type="text" autocomplete="off" class="form-control" name="clave" placeholder="Password">
             </div>
 
             <!-- Div espaciador -->
@@ -97,7 +97,7 @@ if (isset($_SESSION['id'])) {
             <label class="sr-only" for="clave">Verificar contraseña</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="text" autocomplete="off" class="form-control" name="clave2" placeholder="Verifica tu contraseña">
+              <input type="text" autocomplete="off" class="form-control" name="clave2" placeholder="Confirm password">
             </div>
 
             <!-- Animacion de load (solo sera visible cuando el cliente espere una respuesta del servidor )-->

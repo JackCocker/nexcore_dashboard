@@ -23,7 +23,7 @@ if (isset($_SESSION['id'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>Nexcore | Login</title>
+  <title>Nexcore | Sign in</title>
 
   <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -51,7 +51,7 @@ if (isset($_SESSION['id'])) {
   <div class="login-container">
     <div class="login-card">
       <div class="text-center">
-        <h2 class="login-title">Iniciar Sesión</h2>
+        <h2 class="login-title">Sign in</h2>
       </div>
 
       <fieldset>
@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
           <label class="sr-only" for="user">Usuario</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" id="user" placeholder="Ingresa tu usuario">
+            <input type="text" class="form-control" id="user" placeholder="Username or email address">
           </div>
         </div>
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['id'])) {
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
             <input type="password" autocomplete="off" class="form-control" id="clave"
-              placeholder="Ingresa tu contraseña">
+              placeholder="Password">
             <span class="input-group-addon" onmousedown="mostrarClave()" onmouseup="ocultarClave()"
               onmouseleave="ocultarClave()">
               <i class="fa fa-eye" id="ojo"></i>
@@ -88,11 +88,11 @@ if (isset($_SESSION['id'])) {
         </div>
 
         <!-- Botón login -->
-        <button type="button" class="btn btn-login btn-block" id="login">Iniciar sesión</button>
+        <button type="button" class="btn btn-login btn-block" id="login">Sign in</button>
 
         <!-- Registro -->
         <div class="text-center register-link">
-          <p>¿No tienes una cuenta? <a href="registro.php">Regístrate aquí</a></p>
+          <p>New to Nexcore? <a href="registro.php">Create an account</a></p>
         </div>
       </fieldset>
     </div>
