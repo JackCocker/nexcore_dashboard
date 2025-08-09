@@ -1,65 +1,18 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 05-03-2017 a las 18:02:21
--- Versión del servidor: 10.1.16-MariaDB
--- Versión de PHP: 7.0.9
+-- Base de datos para el proyecto Nexcore
+CREATE DATABASE IF NOT EXISTS `nexcoreprotect` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `nexcoreprotect`;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `login`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
+-- Tabla de usuarios
 CREATE TABLE `usuarios` (
-  `id` int(10) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `clave` varchar(255) NOT NULL,
-  `cargo` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL UNIQUE,
+  `clave` VARCHAR(255) NOT NULL,
+  `cargo` INT NOT NULL COMMENT '1 = admin, 2 = usuario',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `clave`, `cargo`) VALUES
-(1, 'michael yara', 'codigoadsi@gmail.com', '202cb962ac59075b964b07152d234b70', '1');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Usuario administrador inicial
+-- Clave: admin123 (MD5)
+INSERT INTO `usuarios` (`nombre`, `email`, `clave`, `cargo`)
+VALUES ('Administrador', 'admin@demo.com', MD5('admin123'), 1);
