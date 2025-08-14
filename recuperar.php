@@ -1,29 +1,9 @@
-<?php
-
-/*
-  En ocasiones el usuario puede volver al login
-  aun si ya existe una sesion iniciada, lo correcto
-  es no mostrar otra ves el login sino redireccionarlo
-  a su pagina principal mientras exista una sesion entonces
-  creamos un archivo que controle el redireccionamiento
-*/
-
-session_start();
-
-// isset verifica si existe una variable o eso creo xd
-if (isset($_SESSION['id'])) {
-  header('location: controller/redirec.php');
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>Nexcore | Sign in</title>
+  <title>Nexcore | Forgot password</title>
 
   <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -51,7 +31,7 @@ if (isset($_SESSION['id'])) {
   <div class="login-container">
     <div class="login-card">
       <div class="text-center">
-        <h2 class="login-title">Sign in</h2>
+        <h2 class="login-title">Forgot password</h2>
       </div>
 
       <fieldset>
@@ -60,20 +40,6 @@ if (isset($_SESSION['id'])) {
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
             <input type="text" class="form-control" id="user" placeholder="Username or email address">
-          </div>
-        </div>
-
-        <!-- Contraseña -->
-        <div class="form-group">
-          <label class="sr-only" for="clave">Contraseña</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" autocomplete="off" class="form-control" id="clave"
-              placeholder="Password">
-            <span class="input-group-addon" onmousedown="mostrarClave()" onmouseup="ocultarClave()"
-              onmouseleave="ocultarClave()">
-              <i class="fa fa-eye" id="ojo"></i>
-            </span>
           </div>
         </div>
 

@@ -23,19 +23,11 @@ $('#login').click(function(){
 
       // Ahora validamos la respuesta de php, si es error_1 algun campo esta vacio de lo contrario todo salio bien y redireccionaremos a donde diga php
       if(res == 'error_1'){
-        /*
-        Para usar sweetalert es muy sencillo, has de cuenta que haces un alert
-        solo que esta ves enviaras 3 parametros separados por comas, el primero
-        es el titulo de la alerta, el segundo es la descripcion y el tercero es el tipo de alerta
-        en el momento conozco tres tipos, entonces puedes variar entre success: Muestra animación de un check,
-        warning: muestra icono de advertencia amarillo y error: muestra una animacion con una X muy chula :v
-        */
-        swal('Error', 'Por favor ingrese todos los campos', 'error');
+        swal('Warning', 'All fields are required', 'warning');
       }else if(res == 'error_2'){
-        // Recuerda que si no necesitas validar si es un email puedes eliminar el if de la linea 34
-        swal('Error', 'Por favor ingrese un email valido', 'warning');
+        swal('Error', 'Incorrect username or password', 'error');
       }else if(res == 'error_3'){
-        swal('Error', 'El usuario y contraseña que ingresaste es incorrecto', 'error');
+        swal('Error', 'Too many failed login attempts. Please try again later', 'error');
       }else{
         // Redireccionamos a la página que diga corresponda el usuario
         window.location.href= res
@@ -62,14 +54,17 @@ $('#registro').click(function(){
       $('#load').hide();
 
       if(res == 'error_1'){
-        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+        swal('Warning', 'All fields are required', 'warning');
       }else if(res == 'error_2'){
-        swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
+        swal('Error', 'Passwords must match', 'error');
       }else if(res == 'error_3'){
-        swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
+        swal('Warning', 'Email already in use', 'warning');
       }else if(res == 'error_4'){
-        swal('Error', 'Por favor ingresa un correo valido', 'warning');
-      }else{
+        swal('Error', 'Invalid email address', 'error');
+      }else if(res == 'error_5'){
+        swal('Warning', 'Username already taken', 'warning');
+      }
+      else{
         window.location.href = res ;
       }
 
