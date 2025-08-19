@@ -1,20 +1,9 @@
-<?php
-
-session_start();
-
-if (isset($_SESSION['id'])) {
-  header('location: controller/redirec.php');
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
-  <title>Nexcore | Sign in</title>
+  <title>Nexcore | Reset password</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -38,29 +27,15 @@ if (isset($_SESSION['id'])) {
   <div class="login-container">
     <div class="login-card">
       <div class="text-center">
-        <h2 class="login-title">Sign in</h2>
+        <h2 class="login-title">Reset password</h2>
       </div>
 
       <fieldset>
         <div class="form-group">
-          <label class="sr-only" for="user">Usuario</label>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" id="user" placeholder="Username or email address">
-          </div>
-        </div>
-
-        <!-- Contraseña -->
-        <div class="form-group">
-          <label class="sr-only" for="clave">Contraseña</label>
+          <label class="sr-only" for="password">Password</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" autocomplete="current-password" class="form-control" id="clave" name="clave"
-              placeholder="Password">
-            <span class="input-group-addon" onmousedown="mostrarClave(this)" onmouseup="ocultarClave(this)"
-              onmouseleave="ocultarClave(this)">
-              <i class="fa fa-eye"></i>
-            </span>
+            <input type="text" class="form-control" id="password" placeholder="Enter new password">
           </div>
         </div>
 
@@ -74,23 +49,12 @@ if (isset($_SESSION['id'])) {
           </div>
         </div>
 
-        <!-- Botón login -->
-        <button type="button" class="btn btn-login btn-block" id="login">Submit</button>
-
-        <!-- Registro -->
-        <div class="text-center register-link">
-          <p>New to Nexcore? <a href="registro.php">Create an account</a></p>
-        </div>
-        <!-- Reestablecer -->
-        <div class="text-center register-link">
-          <p><a href="recuperar.php">Forgot your password?</a></p>
-        </div>
+        <!-- Botón submit -->
+        <button type="button" class="btn btn-login btn-block" id="restablecer">Submit</button>
       </fieldset>
     </div>
   </div>
 
-
-  <!-- / Final Formulario login -->
 
   <!-- Jquery -->
   <script src="js/jquery.js"></script>

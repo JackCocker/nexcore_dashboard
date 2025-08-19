@@ -9,10 +9,12 @@ CREATE TABLE `usuarios` (
   `email` VARCHAR(255) NOT NULL UNIQUE,
   `clave` VARCHAR(255) NOT NULL,
   `cargo` INT NOT NULL COMMENT '1 = admin, 2 = usuario',
+  `codigo_recuperacion` VARCHAR(10) NULL,
+  `codigo_expiracion` DATETIME NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Usuario administrador inicial
--- Clave: admin123 (MD5)
-INSERT INTO `usuarios` (`nombre`, `email`, `clave`, `cargo`)
-VALUES ('Administrador', 'admin@demo.com', MD5('admin123'), 1);
+-- Usuario admin
+-- Clave: LeoStark47! (hascode)
+INSERT INTO `usuarios` (`nombre`, `email`, `clave`, `cargo`,  `codigo_recuperacion`, `codigo_expiracion`)
+VALUES ('admin', 'lacosta2712@gmail.com', '$2y$10$pUUexEeH/PIm56Yp7gD9EuDHx0t6W/LwrQ2U3heA9lnZLbZOrnfHi', 1);

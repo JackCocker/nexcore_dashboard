@@ -5,13 +5,9 @@
   <meta charset="utf-8">
   <title>Nexcore | Recover password</title>
 
-  <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Font Awesome: para los iconos -->
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <!-- Sweet Alert: alertas JavaScript presentables para el usuario (más bonitas que el alert) -->
   <link rel="stylesheet" href="css/sweetalert.css">
-  <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
   <link rel="stylesheet" href="css/style.css">
   <!-- Favicons -->
   <link href="img/logo.png" rel="icon">
@@ -39,7 +35,7 @@
           <label class="sr-only" for="email">Email</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-            <input type="email" class="form-control" id="email" placeholder="Email address" autocomplete="email">
+            <input type="text" class="form-control" id="email" placeholder="Enter email address">
           </div>
         </div>
 
@@ -53,10 +49,10 @@
           </div>
         </div>
 
-        <!-- Botón login -->
-        <button type="button" class="btn btn-login btn-block" id="login">Submit</button>
+        <!-- Botón submit -->
+        <button type="button" class="btn btn-login btn-block" id="recuperar">Submit</button>
 
-        <!-- Registro -->
+        <!-- Message -->
         <div class="text-center register-link info-text">
           <p>Check your email for a verification code to reset your password.</p>
         </div>
@@ -64,8 +60,6 @@
     </div>
   </div>
 
-
-  <!-- / Final Formulario login -->
 
   <!-- Jquery -->
   <script src="js/jquery.js"></script>

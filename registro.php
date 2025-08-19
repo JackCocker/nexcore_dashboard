@@ -16,13 +16,9 @@ if (isset($_SESSION['id'])) {
   <meta charset="utf-8">
   <title>Nexcore | Sign up</title>
 
-  <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Font Awesome: para los iconos -->
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <!-- Sweet Alert: alertas JavaScript presentables para el usuario (más bonitas que el alert) -->
   <link rel="stylesheet" href="css/sweetalert.css">
-  <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
   <link rel="stylesheet" href="css/style.css">
   <!-- Favicons -->
   <link href="img/logo.png" rel="icon">
@@ -100,8 +96,6 @@ if (isset($_SESSION['id'])) {
               </span>
             </div>
 
-
-            <!-- Animacion de load (solo sera visible cuando el cliente espere una respuesta del servidor )-->
             <div class="row" id="load" hidden="hidden">
               <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
                 <img src="img/load.gif" width="100%" alt="">
@@ -110,9 +104,8 @@ if (isset($_SESSION['id'])) {
                 <span>Loading...</span>
               </div>
             </div>
-            <!-- Fin load -->
 
-            <!-- boton #login para activar la funcion click y enviar el los datos mediante ajax -->
+            <!-- boton submit-->
             <button type="button" class="btn btn-login btn-block" id="registro">Submit</button>
 
           </fieldset>
