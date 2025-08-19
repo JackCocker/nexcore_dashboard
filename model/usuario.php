@@ -3,54 +3,52 @@
 # Incluimos la clase conexion para poder heredar los metodos de ella.
 require_once('conexion.php');
 
-
 class Usuario extends Conexion
 {
-
   public function login($user, $clave)
   {
-
-    # Nos conectamos a la base de datos
+    # Conectamos a la base de datos
     parent::conectar();
 
-    // El metodo salvar sirve para escapar cualquier comillas doble o simple y otros caracteres que pueden vulnerar nuestra consulta SQL
-    $user  = parent::salvar($user);
+    // Escapamos caracteres peligrosos
+    $user = parent::salvar($user);
     $clave = parent::salvar($clave);
 
-    // Si necesitas filtrar las mayusculas y los acentos habilita las lineas 36 y 37 recuerda que en la base de datos debe estar filtrado tambien para una validacion correcta
-    /*$user  = parent::filtrar($user);
-      $clave = parent::filtrar($clave);*/
+    // Traemos al usuario por email o nombre
+    $consulta = 'SELECT id, nombre, cargo, clave
+                     FROM usuarios
+                     WHERE email="' . $user . '" OR nombre="' . $user . '"
+                     LIMIT 1';
 
-    // traemos el id y el nombre de la tabla usuarios donde el usuario sea igual al usuario ingresado y ademas la clave sea igual a la ingresada para ese usuario.
-    $consulta = 'SELECT id, nombre, cargo 
-                 FROM usuarios 
-                 WHERE (email="' . $user . '" OR nombre="' . $user . '") 
-                 AND clave = MD5("' . $clave . '")';
+    $datosUsuario = parent::consultaArreglo($consulta);
 
-    $verificar_usuario = parent::verificarRegistros($consulta);
+    // Verificamos la contraseña usando password_verify()
+    if ($datosUsuario && password_verify($clave, $datosUsuario['clave'])) {
 
-    // si la consulta es mayor a 0 el usuario existe
-    if ($verificar_usuario > 0) {
-      $user = parent::consultaArreglo($consulta);
+      // Rehash si el algoritmo/cost cambia
+      if (password_needs_rehash($datosUsuario['clave'], PASSWORD_DEFAULT)) {
+        $nuevoHash = password_hash($clave, PASSWORD_DEFAULT);
+        $nuevoHash = parent::salvar($nuevoHash);
+        parent::query('UPDATE usuarios SET clave="' . $nuevoHash . '" WHERE id=' . intval($datosUsuario['id']));
+      }
 
+      // Iniciamos sesión
       session_start();
-      $_SESSION['id']     = $user['id'];
-      $_SESSION['nombre'] = $user['nombre'];
-      $_SESSION['cargo']  = $user['cargo'];
+      $_SESSION['id'] = $datosUsuario['id'];
+      $_SESSION['nombre'] = $datosUsuario['nombre'];
+      $_SESSION['cargo'] = $datosUsuario['cargo'];
 
-      // Verificamos que cargo tiene l usuario y asi mismo dar la respuesta a ajax para que redireccione
+      // Redirección según cargo
       if ($_SESSION['cargo'] == 1) {
         echo 'view/admin/index.php';
       } else if ($_SESSION['cargo'] == 2) {
         echo 'view/user/index.php';
       }
     } else {
-      // El usuario y la clave son incorrectos
+      // Usuario o contraseña incorrectos
       echo 'error_2';
     }
 
-
-    # Cerramos la conexion
     parent::cerrar();
   }
 
@@ -58,7 +56,8 @@ class Usuario extends Conexion
   {
     parent::conectar();
 
-    $name  = parent::filtrar($name);
+    // Escapamos caracteres y filtramos acentos
+    $name = parent::filtrar($name);
     $email = parent::filtrar($email);
     $clave = parent::filtrar($clave);
 
@@ -78,13 +77,18 @@ class Usuario extends Conexion
       return;
     }
 
-    // Si pasa las validaciones, insertar
-    parent::query('INSERT INTO usuarios(nombre, email, clave, cargo) 
-                   VALUES("' . $name . '", "' . $email . '", MD5("' . $clave . '"), 2)');
+    // Generar hash seguro para la contraseña
+    $hash = password_hash($clave, PASSWORD_DEFAULT);
+    $hash = parent::salvar($hash);
 
+    // Insertamos el usuario con hash
+    parent::query('INSERT INTO usuarios(nombre, email, clave, cargo)
+                       VALUES("' . $name . '", "' . $email . '", "' . $hash . '", 2)');
+
+    // Iniciamos sesión
     session_start();
     $_SESSION['nombre'] = $name;
-    $_SESSION['cargo']  = 2;
+    $_SESSION['cargo'] = 2;
 
     echo 'view/user/index.php';
 

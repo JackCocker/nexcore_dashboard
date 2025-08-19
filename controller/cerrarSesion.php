@@ -1,9 +1,8 @@
 <?php
 
-  // Eliminamos la sesion
-  session_start();
-  session_destroy();
+session_start();
+session_destroy();
 
-  header('location: ../index.php');
+header('location: ../index.php');
 
 ?>

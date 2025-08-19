@@ -84,7 +84,7 @@ class Conexion
     $res = str_replace($buscar, $reemplazar, $string);
 
     # strtolower: Convierte una cadena a minúsculas
-    $res = strtolower($res);
+    //$res = strtolower($res);
 
     # trim: Elimina espacio en blanco (u otro tipo de caracteres) del inicio y el final de la cadena
     $res = trim($res);

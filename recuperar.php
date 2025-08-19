@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Nexcore | Forgot password</title>
+  <title>Nexcore | Recover password</title>
 
   <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -31,15 +31,15 @@
   <div class="login-container">
     <div class="login-card">
       <div class="text-center">
-        <h2 class="login-title">Forgot password</h2>
+        <h2 class="login-title">Recover password</h2>
       </div>
 
       <fieldset>
         <div class="form-group">
-          <label class="sr-only" for="user">Usuario</label>
+          <label class="sr-only" for="email">Email</label>
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control" id="user" placeholder="Username or email address">
+            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <input type="email" class="form-control" id="email" placeholder="Email address" autocomplete="email">
           </div>
         </div>
 
@@ -54,15 +54,11 @@
         </div>
 
         <!-- Botón login -->
-        <button type="button" class="btn btn-login btn-block" id="login">Sign in</button>
+        <button type="button" class="btn btn-login btn-block" id="login">Submit</button>
 
         <!-- Registro -->
-        <div class="text-center register-link">
-          <p>New to Nexcore? <a href="registro.php">Create an account</a></p>
-        </div>
-        <!-- Reestablecer -->
-        <div class="text-center register-link">
-          <p><a href="recuperar.php">Forgot your password</a></p>
+        <div class="text-center register-link info-text">
+          <p>Check your email for a verification code to reset your password.</p>
         </div>
       </fieldset>
     </div>

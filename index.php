@@ -1,16 +1,7 @@
 <?php
 
-/*
-  En ocasiones el usuario puede volver al login
-  aun si ya existe una sesion iniciada, lo correcto
-  es no mostrar otra ves el login sino redireccionarlo
-  a su pagina principal mientras exista una sesion entonces
-  creamos un archivo que controle el redireccionamiento
-*/
-
 session_start();
 
-// isset verifica si existe una variable o eso creo xd
 if (isset($_SESSION['id'])) {
   header('location: controller/redirec.php');
 }
@@ -68,11 +59,11 @@ if (isset($_SESSION['id'])) {
           <label class="sr-only" for="clave">Contraseña</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-            <input type="password" autocomplete="off" class="form-control" id="clave"
+            <input type="password" autocomplete="current-password" class="form-control" id="clave" name="clave"
               placeholder="Password">
-            <span class="input-group-addon" onmousedown="mostrarClave()" onmouseup="ocultarClave()"
-              onmouseleave="ocultarClave()">
-              <i class="fa fa-eye" id="ojo"></i>
+            <span class="input-group-addon" onmousedown="mostrarClave(this)" onmouseup="ocultarClave(this)"
+              onmouseleave="ocultarClave(this)">
+              <i class="fa fa-eye"></i>
             </span>
           </div>
         </div>
@@ -88,7 +79,7 @@ if (isset($_SESSION['id'])) {
         </div>
 
         <!-- Botón login -->
-        <button type="button" class="btn btn-login btn-block" id="login">Sign in</button>
+        <button type="button" class="btn btn-login btn-block" id="login">Submit</button>
 
         <!-- Registro -->
         <div class="text-center register-link">
@@ -96,7 +87,7 @@ if (isset($_SESSION['id'])) {
         </div>
         <!-- Reestablecer -->
         <div class="text-center register-link">
-          <p><a href="recuperar.php">Forgot your password</a></p>
+          <p><a href="recuperar.php">Forgot your password?</a></p>
         </div>
       </fieldset>
     </div>

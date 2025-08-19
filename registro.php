@@ -1,16 +1,7 @@
 <?php
 
-/*
-    En ocasiones el usuario puede volver al login
-    aun si ya existe una sesion iniciada, lo correcto
-    es no mostrar otra ves el login sino redireccionarlo
-    a su pagina principal mientras exista una sesion entonces
-    creamos un archivo que controle el redireccionamiento
-  */
-
 session_start();
 
-// isset verifica si existe una variable o eso creo xd
 if (isset($_SESSION['id'])) {
   header('location: controller/redirec.php');
 }
@@ -67,38 +58,48 @@ if (isset($_SESSION['id'])) {
             <label class="sr-only" for="user">Nombre</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="name" placeholder="Username">
+              <input type="text" class="form-control" name="name" placeholder="Username" autocomplete="">
             </div>
 
             <!-- Div espaciador -->
             <div class="spacing-2"></div>
 
-            <!-- Caja de texto para usuario -->
-            <label class="sr-only" for="user">Email</label>
+            <!-- Caja de texto para Email -->
+            <label class="sr-only" for="email">Email</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-              <input type="text" class="form-control" name="email" placeholder="Email">
+              <input type="email" class="form-control" name="email" placeholder="Email" autocomplete="email">
             </div>
 
             <!-- Div espaciador -->
             <div class="spacing-2"></div>
 
-            <!-- Caja de texto para la clave-->
+            <!-- Contraseña -->
             <label class="sr-only" for="clave">Contraseña</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="text" autocomplete="off" class="form-control" name="clave" placeholder="Password">
+              <input type="password" class="form-control" id="clave" name="clave" placeholder="Password"
+                autocomplete="new-password">
+              <span class="input-group-addon" onmousedown="mostrarClave(this)" onmouseup="ocultarClave(this)"
+                onmouseleave="ocultarClave(this)">
+                <i class="fa fa-eye"></i>
+              </span>
             </div>
 
-            <!-- Div espaciador -->
             <div class="spacing-2"></div>
 
-            <!-- Caja de texto para la clave-->
-            <label class="sr-only" for="clave">Verificar contraseña</label>
+            <!-- Verificar contraseña -->
+            <label class="sr-only" for="clave2">Verificar contraseña</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="text" autocomplete="off" class="form-control" name="clave2" placeholder="Confirm password">
+              <input type="password" class="form-control" id="clave2" name="clave2" placeholder="Confirm password"
+                autocomplete="new-password">
+              <span class="input-group-addon" onmousedown="mostrarClave(this)" onmouseup="ocultarClave(this)"
+                onmouseleave="ocultarClave(this)">
+                <i class="fa fa-eye"></i>
+              </span>
             </div>
+
 
             <!-- Animacion de load (solo sera visible cuando el cliente espere una respuesta del servidor )-->
             <div class="row" id="load" hidden="hidden">
@@ -106,13 +107,13 @@ if (isset($_SESSION['id'])) {
                 <img src="img/load.gif" width="100%" alt="">
               </div>
               <div class="col-xs-12 center text-accent">
-                <span>Validando información...</span>
+                <span>Loading...</span>
               </div>
             </div>
             <!-- Fin load -->
 
             <!-- boton #login para activar la funcion click y enviar el los datos mediante ajax -->
-            <button type="button" class="btn btn-login btn-block" id="registro">Registrate</button>
+            <button type="button" class="btn btn-login btn-block" id="registro">Submit</button>
 
           </fieldset>
         </form>
